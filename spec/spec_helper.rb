@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "esgil"
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
@@ -13,3 +11,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+
+require 'esgil'
