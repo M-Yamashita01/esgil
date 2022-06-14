@@ -17,10 +17,9 @@ module Esgil
       target_messages = []
       @git.log.between(@from_branch, @to_branch).each do |commit|
         commit_message = commit.message
-        # target_message = commit_message[/TEST-\d{4,}/]
-        target_message = commit_message.contains?(message)
+        target_message = commit_message[/#{message}/]
         if target_message
-          target_messages << target_message
+          target_messages << commit_message
         end
       end
 

@@ -21,7 +21,7 @@ RSpec.describe Esgil::CommitFinder do
 
     before do
       allow_any_instance_of(Git::Object::Commit).to receive(:check_commit).and_return(true)
-      allow_any_instance_of(Git::Object::Commit).to receive(:between).and_return(commits)
+      allow_any_instance_of(Git::Log).to receive(:between).and_return(commits)
       allow_any_instance_of(Git::Log).to receive(:each).and_return(commits)
 
       commit.instance_variable_set(:@message, commit_message)
@@ -31,9 +31,7 @@ RSpec.describe Esgil::CommitFinder do
 
     it 'get messages contains message' do
       messages = subject
-      messages.each do |target_message|
-        expect(target_message.contains?(message)).to be_truthy
-      end
+      expect(messages).to contain_exactly(commit_message, commit_message2)
     end
   end
 end
