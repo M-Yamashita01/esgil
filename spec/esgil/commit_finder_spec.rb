@@ -14,12 +14,13 @@ RSpec.describe Esgil::CommitFinder do
     let(:commit_message) { 'test message' }
     let(:commit_message2) { 'sample test message' }
     let(:commit_message3) { 'sample message' }
-
     let(:commits) { [commit, commit2, commit3] }
 
     subject { described_class.new(from_branch: from_branch, to_branch: to_branch).find(message: message) }
 
     before do
+      # TODO Replace allow_any_instance_of with another mock codes.
+      allow_any_instance_of(described_class).to receive(:branch_exists?).and_return(true)
       allow_any_instance_of(Git::Object::Commit).to receive(:check_commit).and_return(true)
       allow_any_instance_of(Git::Log).to receive(:between).and_return(commits)
       allow_any_instance_of(Git::Log).to receive(:each).and_return(commits)
