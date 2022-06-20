@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../lib/esgil/commit_finder'
+require_relative '../../lib/esgil/commit_messages'
 
 RSpec.describe Esgil::CommitFinder do
   describe '#find' do
@@ -31,8 +32,8 @@ RSpec.describe Esgil::CommitFinder do
     end
 
     it 'get messages contains message' do
-      messages = subject
-      expect(messages).to contain_exactly(commit_message, commit_message2)
+      commit_messages = subject
+      expect(commit_messages.messages).to contain_exactly(commit_message, commit_message2)
     end
   end
 end
