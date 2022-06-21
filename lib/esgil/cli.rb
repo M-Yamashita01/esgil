@@ -1,27 +1,23 @@
 # frozen_string_literal: true
 
+require_relative 'commit_finder'
+require_relative 'commit_messages'
+
 module Esgil
   STATUS_SUCCESS = 0
   STATUS_ERROR = 1
 
   class Cli
     def run(args)
-      from_branch = ''
-      if args[0] == '--from'
-        from_branch = args[1]
-      end
 
-      g = Git.open(Dir.pwd)
-      target_messages = []
-      g.log.between(from_branch, g.current_branch).each do |commit|
-        commit_message = commit.message
-        target_message = commit_message[/TEST-\d{4,}/]
-        if target_message
-          target_messages << target_message
-        end
-      end
+      from_branch = args[0]
+      to_branch = args[1]
+      message = args[2]
 
-      target_messages.each do |target_message|
+      commit_finder = CommitFinder.new(from_branch: from_branch, to_branch: to_branch)
+      commit_messages = commit_finder.find(message: message)
+
+      commit_messages.messages.each do |message|
         puts target_message
       end
 
