@@ -4,10 +4,10 @@ require_relative '../../lib/esgil/options'
 
 RSpec.describe Esgil::Options do
   describe '.parse' do
+    subject { described_class.parse(command_line_args: command_line_args)}
+
     context 'when all arguments exist' do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test', '--message', 'test_message'] }
-
-      subject { described_class.parse(command_line_args: command_line_args)}
 
       it 'gets instance variable in Esgil::Option class' do
         options = subject
@@ -20,7 +20,21 @@ RSpec.describe Esgil::Options do
     context 'when some arguments exist' do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test'] }
 
-      subject { described_class.parse(command_line_args: command_line_args)}
+      it 'gets ArgumentsError exception' do
+        expect { subject }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'when illegal options exist' do
+      let(:command_line_args) { ['--test'] }
+
+      it 'gets OptionParser::InvalidOption exception' do
+        expect { subject }.to raise_error(OptionParser::InvalidOption)
+      end
+    end
+
+    context 'when unnecessary options exist' do
+      let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test', '--message', 'test_message', 'sample'] }
 
       it 'gets ArgumentsError exception' do
         expect { subject }.to raise_error(ArgumentError)
