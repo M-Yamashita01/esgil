@@ -33,7 +33,7 @@ RSpec.describe Esgil::CommitFinder do
 
     it 'get messages contains message' do
       commit_messages = subject
-      expect(commit_messages.messages).to contain_exactly(commit_message, commit_message2)
+      expect(commit_messages.messages).to contain_exactly('test', 'test')
     end
   end
 end

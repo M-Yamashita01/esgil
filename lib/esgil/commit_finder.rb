@@ -27,7 +27,7 @@ module Esgil
         commit_message = commit.message
         target_message = commit_message[/#{message}/]
         if target_message
-          commit_messages = commit_messages.add(message: commit_message)
+          commit_messages = commit_messages.add(message: target_message)
         end
       end
 
