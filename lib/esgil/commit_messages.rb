@@ -20,5 +20,10 @@ module Esgil
 
       Esgil::CommitMessages.new(messages: extracted_words)
     end
+
+    def uniq
+      unique_messages = @messages.uniq
+      Esgil::CommitMessages.new(messages: unique_messages)
+    end
   end
 end

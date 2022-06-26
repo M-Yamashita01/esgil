@@ -49,4 +49,20 @@ RSpec.describe Esgil::CommitMessages do
       end
     end
   end
+
+  describe '#uniq' do
+    let(:sample_message) { 'sample message' }
+    let(:sample_message2) { 'sample message' }
+    let(:sample_message3) { 'example test' }
+
+    let(:sample_messages) { [sample_message, sample_message2, sample_message3] }
+
+    subject { described_class.new(messages: sample_messages).uniq }
+
+    it 'get commit messages with unique messages' do
+      commit_messages = subject
+      expect(commit_messages.messages.size).to eq(2)
+      expect(commit_messages.messages).to contain_exactly(sample_message, sample_message3)
+    end
+  end
 end
