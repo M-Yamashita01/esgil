@@ -1,11 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
-require:
-  - rubocop/cop/internal_affairs
-  - rubocop-performance
-  - rubocop-rspec
-  - rubocop-rake
-
 AllCops:
   NewCops: enable
   Exclude:
@@ -18,4 +10,13 @@ AllCops:
   SuggestExtensions: false
 
 Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/NegatedIf:
   Enabled: false
