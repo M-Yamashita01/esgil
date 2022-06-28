@@ -6,7 +6,7 @@ AllCops:
     - 'tmp/**/*'
     - '.git/**/*'
     - 'bin/*'
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
   SuggestExtensions: false
 
 Style/IfUnlessModifier:
