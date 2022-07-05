@@ -9,7 +9,6 @@ module Esgil
 
   class Cli
     def run(args)
-
       from_branch = args[0]
       to_branch = args[1]
       message = args[2]
