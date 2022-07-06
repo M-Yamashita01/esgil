@@ -21,9 +21,9 @@ module Esgil
       end
 
       STATUS_SUCCESS
-    rescue StandardError => err
-      logger.error(err.message)
-      logger.error(err.backtrace)
+    rescue StandardError => e
+      logger.error(e.message)
+      logger.error(e.backtrace)
       STATUS_ERROR
     end
   end
