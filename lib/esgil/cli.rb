@@ -16,7 +16,7 @@ module Esgil
       commit_finder = CommitFinder.new(from_branch: from_branch, to_branch: to_branch)
       commit_messages = commit_finder.find(message: message)
 
-      commit_messages.messages.each do |message|
+      commit_messages.messages.each do |target_message|
         puts target_message
       end
 
