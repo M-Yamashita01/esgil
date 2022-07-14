@@ -4,7 +4,7 @@ require_relative '../../lib/esgil/options'
 
 RSpec.describe Esgil::Options do
   describe '.parse' do
-    subject { described_class.parse(command_line_args: command_line_args)}
+    subject { described_class.parse(command_line_args: command_line_args) }
 
     context 'when all arguments exist' do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test', '--message', 'test_message'] }
