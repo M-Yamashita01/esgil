@@ -33,9 +33,9 @@ module Esgil
         @options = {}
 
         option_parser = OptionParser.new
-        option_parser.on('--from FROM_BRANCH') { |v| @options[:from_branch] = v }
-        option_parser.on('--to FROM_BRANCH') { |v| @options[:to_branch] = v }
-        option_parser.on('--message MESSAGE') { |v| @options[:message] = v }
+        option_parser.on('--from FROM_BRANCH', '-f') { |v| @options[:from_branch] = v }
+        option_parser.on('--to FROM_BRANCH', '-t') { |v| @options[:to_branch] = v }
+        option_parser.on('--message MESSAGE', '-m') { |v| @options[:message] = v }
       end
 
       def all_options_exist?
