@@ -23,3 +23,6 @@ Style/AccessorGrouping:
 
 Style/NegatedIf:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
