@@ -5,6 +5,8 @@ require_relative '../../lib/esgil/commit_messages'
 
 RSpec.describe Esgil::CommitFinder do
   describe '#find' do
+    subject { described_class.new(from_branch: from_branch, to_branch: to_branch).find(message: message) }
+
     let(:from_branch) { 'develop' }
     let(:to_branch) { 'staging' }
     let(:message) { 'test' }
@@ -16,8 +18,6 @@ RSpec.describe Esgil::CommitFinder do
     let(:commit_message2) { 'sample test message' }
     let(:commit_message3) { 'sample message' }
     let(:commits) { [commit, commit2, commit3] }
-
-    subject { described_class.new(from_branch: from_branch, to_branch: to_branch).find(message: message) }
 
     before do
       # TODO Replace allow_any_instance_of with another mock codes.

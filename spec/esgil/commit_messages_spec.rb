@@ -4,9 +4,9 @@ require_relative '../../lib/esgil/commit_messages'
 
 RSpec.describe Esgil::CommitMessages do
   describe '#add' do
-    let(:message) { 'sample message' }
-
     subject { described_class.new(messages: []).add(message: message) }
+
+    let(:message) { 'sample message' }
 
     it 'get instance of CommitMessage class' do
       commit_message = subject
@@ -21,13 +21,13 @@ RSpec.describe Esgil::CommitMessages do
   end
 
   describe '#get_specific_message' do
+    subject { described_class.new(messages: sample_messages).get_specific_messages(specific_message: specific_message) }
+
     let(:sample_message) { 'sample message' }
     let(:sample_message2) { 'example sample' }
     let(:sample_message3) { 'example test' }
 
     let(:sample_messages) { [sample_message, sample_message2, sample_message3] }
-
-    subject { described_class.new(messages: sample_messages).get_specific_messages(specific_message: specific_message) }
 
     context 'when we pass word as argument' do
       let(:specific_message) { 'sample' }
@@ -51,13 +51,13 @@ RSpec.describe Esgil::CommitMessages do
   end
 
   describe '#uniq' do
+    subject { described_class.new(messages: sample_messages).uniq }
+
     let(:sample_message) { 'sample message' }
     let(:sample_message2) { 'sample message' }
     let(:sample_message3) { 'example test' }
 
     let(:sample_messages) { [sample_message, sample_message2, sample_message3] }
-
-    subject { described_class.new(messages: sample_messages).uniq }
 
     it 'get commit messages with unique messages' do
       commit_messages = subject
