@@ -35,7 +35,7 @@ RSpec.describe Esgil::CommitMessages do
       it 'get messages with the word only' do
         commit_messages = subject
         expect(commit_messages.messages.size).to eq(2)
-        commit_messages.messages.each { |message| expect(message).to eq(specific_message) }
+        commit_messages.messages.all { |message| expect(message).to eq(specific_message) }
       end
     end
 
