@@ -4,13 +4,13 @@ require_relative '../../lib/esgil/options'
 
 RSpec.describe Esgil::Options do
   describe '.parse' do
-    subject { described_class.parse(command_line_args: command_line_args) }
+    subject(:parse_command_line_args) { described_class.parse(command_line_args: command_line_args) }
 
     context 'when all arguments exist' do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test', '--message', 'test_message'] }
 
       it 'gets instance variable in Esgil::Option class' do
-        options = subject
+        options = parse_command_line_args
         expect(options.from_branch).to eq('from_test')
         expect(options.to_branch).to eq('to_test')
         expect(options.message).to eq('test_message')
@@ -21,7 +21,7 @@ RSpec.describe Esgil::Options do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test'] }
 
       it 'gets ArgumentsError exception' do
-        expect { subject }.to raise_error(ArgumentError)
+        expect { parse_command_line_args }.to raise_error(ArgumentError)
       end
     end
 
@@ -29,7 +29,7 @@ RSpec.describe Esgil::Options do
       let(:command_line_args) { ['--test'] }
 
       it 'gets OptionParser::InvalidOption exception' do
-        expect { subject }.to raise_error(OptionParser::InvalidOption)
+        expect { parse_command_line_args }.to raise_error(OptionParser::InvalidOption)
       end
     end
 
@@ -37,7 +37,7 @@ RSpec.describe Esgil::Options do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test', '--message', 'test_message', 'sample'] }
 
       it 'gets ArgumentsError exception' do
-        expect { subject }.to raise_error(ArgumentError)
+        expect { parse_command_line_args }.to raise_error(ArgumentError)
       end
     end
   end

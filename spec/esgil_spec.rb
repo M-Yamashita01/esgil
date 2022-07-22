@@ -2,6 +2,6 @@
 
 RSpec.describe Esgil do
   it 'has a version number' do
-    expect(Esgil::VERSION).not_to be(nil)
+    expect(Esgil::VERSION).not_to be_nil
   end
 end

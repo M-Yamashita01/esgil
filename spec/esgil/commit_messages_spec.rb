@@ -21,7 +21,10 @@ RSpec.describe Esgil::CommitMessages do
   end
 
   describe '#get_specific_message' do
-    subject(:get_specific_message) { described_class.new(messages: sample_messages).get_specific_messages(specific_message: specific_message) }
+    subject(:get_specific_message) do
+      described_class.new(messages: sample_messages)
+                     .get_specific_messages(specific_message: specific_message)
+    end
 
     let(:sample_message) { 'sample message' }
     let(:sample_message2) { 'example sample' }
