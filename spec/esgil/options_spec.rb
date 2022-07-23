@@ -17,6 +17,18 @@ RSpec.describe Esgil::Options do
       end
     end
 
+    context 'when short arguments exist' do
+      let(:command_line_args) { ['-f', 'from_test', '-t', 'to_test', '-m', 'test_message'] }
+
+      it 'gets instance variable in Esgil::Option class' do
+        options = parse_command_line_args
+
+        expect(options.from_branch).to eq('from_test')
+        expect(options.to_branch).to eq('to_test')
+        expect(options.message).to eq('test_message')
+      end
+    end
+
     context 'when some arguments exist' do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test'] }
 
