@@ -6,15 +6,15 @@ module Esgil
   class CommitFinder
     def initialize(from_branch:, to_branch:)
       if from_branch.empty?
-        raise ArgumentError.new('Set the from_branch.')
+        raise ArgumentError 'Set the from_branch.'
       end
 
       @git = Git.open(Dir.pwd)
 
       if !branch_exists?(branch: from_branch)
-        raise ArgumentError.new("branch does not exist. branch: #{from_branch}")
+        raise ArgumentError "branch does not exist. branch: #{from_branch}"
       elsif !branch_exists?(branch: to_branch)
-        raise ArgumentError.new("branch does not exist. branch: #{to_branch}")
+        raise ArgumentError "branch does not exist. branch: #{to_branch}"
       end
 
       @from_branch = from_branch

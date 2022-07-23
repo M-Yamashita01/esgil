@@ -9,7 +9,6 @@ module Esgil
 
   class Cli
     def run(args)
-
       from_branch = args[0]
       to_branch = args[1]
       message = args[2]
@@ -17,14 +16,14 @@ module Esgil
       commit_finder = CommitFinder.new(from_branch: from_branch, to_branch: to_branch)
       commit_messages = commit_finder.find(message: message)
 
-      commit_messages.messages.each do |message|
+      commit_messages.messages.each do |target_message|
         puts target_message
       end
 
       STATUS_SUCCESS
-    rescue StandardError => err
-      logger.error(err.message)
-      logger.error(err.backtrace)
+    rescue StandardError => e
+      logger.error(e.message)
+      logger.error(e.backtrace)
       STATUS_ERROR
     end
   end

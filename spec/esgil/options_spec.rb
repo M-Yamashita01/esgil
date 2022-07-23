@@ -4,7 +4,7 @@ require_relative '../../lib/esgil/options'
 
 RSpec.describe Esgil::Options do
   describe '.parse' do
-    subject(:parse_command_line_args) { described_class.parse(command_line_args: command_line_args)}
+    subject(:parse_command_line_args) { described_class.parse(command_line_args: command_line_args) }
 
     context 'when all arguments exist' do
       let(:command_line_args) { ['--from', 'from_test', '--to', 'to_test', '--message', 'test_message'] }
@@ -22,6 +22,7 @@ RSpec.describe Esgil::Options do
 
       it 'gets instance variable in Esgil::Option class' do
         options = parse_command_line_args
+
         expect(options.from_branch).to eq('from_test')
         expect(options.to_branch).to eq('to_test')
         expect(options.message).to eq('test_message')
