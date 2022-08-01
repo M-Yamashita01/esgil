@@ -17,13 +17,13 @@ esgil --from from_branch --to to_branch --message sample
 ```
 
 ### Arguments
-#### from (required)
+#### `from` or `f` (required)
 You can set the from branch name you want to get log.
 
-#### to (required)
+#### `to` or `t` (required)
 
 You can set the to branch name you want to get log.
-#### message (required)
+#### `message` or `m` (required)
 
 You can set the message you want.
 You can also use regular expression in the message.
